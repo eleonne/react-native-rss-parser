@@ -140,7 +140,8 @@ function getItemContent(node) {
 }
 
 function getItemAuthors(node) {
-  const authors = utils.getElementTextContentArray(node, 'author');
+  let authors = utils.getElementTextContentArray(node, 'author');
+  authors = (authors.length > 0) ? authors : utils.getElementTextContentArray(node, 'dc:creator');
 
   return authors.map(function(author) {
     return {
